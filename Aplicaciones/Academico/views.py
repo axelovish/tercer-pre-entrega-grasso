@@ -18,7 +18,7 @@ def FormularioCurso(request):
 
     if request.method == 'POST':
 
-        Curso = Curso(nombre=request.POST['nombre'], codigo=request.POST['codigo'])
+        nombre = Curso(nombre=request.POST['nombre'], codigo=request.POST['codigo'])
 
         Curso.save()
 
