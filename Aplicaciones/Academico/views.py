@@ -32,7 +32,7 @@ def busquedaCurso(request):
 def buscar(request):
 
     if  request.GET["curso"]:
-        Curso = request.GET["nombre"]
+        curso = request.GET["nombre"]
         Curso = Curso.ojects.filter(Curso_icontains=Curso)
 
         return render(request, "resultadosBusquedas.html", {"codigo": Curso, "nombre": Curso})
