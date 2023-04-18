@@ -1,16 +1,47 @@
 from django.shortcuts import render, redirect
 from .models import Curso
 from django.contrib import messages
+from django.http import HttpResponse
+
 
 # Create your views here.
-
 
 def home(request):
     cursosListados = Curso.objects.all()
     messages.success(request, '¡Cursos listados!')
     return render(request, "gestionCursos.html", {"cursos": cursosListados})
 
+def FormularioCurso(request):
 
+    print('method: ', request.method)
+    print('post: ', request.POST)
+
+    if request.method == 'POST':
+
+        Curso = Curso(nombre=request.POST['nombre'], codigo=request.POST['codigo'])
+
+        Curso.save()
+
+        return render(request, "gestionCurso.html")
+    return render(request, "FormularioCurso.html")    
+        
+        
+def busquedaCurso(request):
+    return render(request, "busquedaCurso.html")
+
+def buscar(request):
+
+    if  request.GET["curso"]:
+        Curso = request.GET["nombre"]
+        Curso = Curso.ojects.filter(Curso_icontains=Curso)
+
+        return render(request, "resultadosBusquedas.html", {"codigo": Curso, "nombre": Curso})
+    else:
+        respuesta = "No enviaste datos"
+
+    return HttpResponse(respuesta)    
+
+   
 def registrarCurso(request):
     codigo = request.POST['txtCodigo']
     nombre = request.POST['txtNombre']

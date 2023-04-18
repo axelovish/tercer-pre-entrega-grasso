@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<p>Estamos uscando: {{Curso}}</p>
+
+
+       <ul>
+
+           {% for cursos in Curso %}
+               <li> {{Curso.nombre}}</li>
+               <li> {{Curso.codigo}}</li>
+
+            {% endfor %}   
+
+
+       </ul>
+
+
+{% endblock contenidoQueCambia %}       

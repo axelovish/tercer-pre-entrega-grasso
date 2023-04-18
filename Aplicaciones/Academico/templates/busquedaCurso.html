@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>Formulario busqueda</h1>
+
+
+    <from action="{% url 'busquedaCurso' %}" method="GET">
+
+        <input type="text" name="nombre" id="nombre">
+
+        <input type="submit" value="Buscar">
+
+    </from>
+
+{% endblock contenidoQueCambia %}  
